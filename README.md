@@ -61,7 +61,7 @@ python -m src.crossword.grid_generator
 
 ## Skill Integration
 
-The skill at `.claude/skills/crossword-from-source.md` can be combined with other educational skills:
+The skill at `.claude/skills/crossword-from-source/` can be combined with other educational skills:
 
 - **Pre-reading**: Generate vocabulary crosswords before assigning readings
 - **Post-lecture**: Create review puzzles from lecture notes
@@ -108,7 +108,11 @@ The generator creates clues at a college level with moderate verbal fluency:
 crossword-builder/
 ├── .claude/
 │   └── skills/
-│       └── crossword-from-source.md   # Claude Code skill
+│       └── crossword-from-source/     # Claude Code skill (folder)
+│           ├── SKILL.md               # Main skill definition
+│           └── references/
+│               ├── clue-guidelines.md # Loaded when writing clues
+│               └── output-formats.md  # Loaded for output formatting
 ├── src/
 │   └── crossword/
 │       ├── __init__.py
