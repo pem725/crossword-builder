@@ -99,6 +99,53 @@ For web integration, provide structured JSON:
 | `col` | int | Starting column (0-indexed) |
 | `length` | int | Word length |
 
+## PNG Rendering
+
+Generated via `render("png", ...)` or `render_all()`. Uses Pillow.
+
+| Property | Default |
+|----------|---------|
+| DPI | 300 (print quality) |
+| Cell size | 40 px |
+| Blocked cells | Black fill |
+| Numbers | Top-left corner, grey |
+| Fonts | Helvetica → Arial → DejaVu → Pillow default |
+
+`render_png_pair()` produces both student (blank) and answer-key versions.
+
+## PDF Worksheet
+
+Generated via `render("pdf", ...)` or `render_all()`. Uses fpdf2.
+
+**Page 1:**
+1. Header: title, subtitle, name/date fields
+2. Instructions line
+3. Embedded grid PNG (student version)
+4. Two-column clue list (Across | Down)
+
+**Page 2:** Answer key grid (optional, on by default).
+
+## Interactive HTML
+
+Generated via `render("html", ...)` or `render_all()`. No extra dependencies.
+
+**Self-contained** single file — no CDN links, works offline, hostable anywhere.
+
+| Feature | Description |
+|---------|-------------|
+| Cell navigation | Click cells, arrow keys |
+| Letter input | Type directly into cells |
+| Clue highlight | Click clue to highlight its word in grid |
+| Direction toggle | Click same cell to switch Across ↔ Down |
+| Check | Red/green feedback (2 s flash) |
+| Reveal Word | Fills current word with answers |
+| Clear All | Resets all entered letters |
+| Progress save | Automatic via localStorage |
+| Print fallback | `@media print` CSS strips interactive styling |
+| Responsive | Side-by-side on desktop, stacked on mobile |
+
+Puzzle data is embedded as JSON in a `<script>` tag (same structure as JSON Export above).
+
 ## Print-Ready Format
 
 For classroom handouts, include:

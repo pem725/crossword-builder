@@ -65,9 +65,26 @@ Provide puzzle in this structure:
 
 See [references/output-formats.md](references/output-formats.md) for ASCII rendering and JSON export format.
 
+### 6. Render Output Files
+
+After generating the grid and clues, render the puzzle to publishable formats:
+
+```python
+from src.crossword import render_all
+
+files = render_all(puzzle, "output/", basename="week03_vocab",
+                   title="Week 3: Motivation", subtitle="PSYC 405")
+# files → {"png": "...", "png_key": "...", "pdf": "...", "html": "..."}
+```
+
+- **PNG** — printable grid image (student + answer key)
+- **PDF** — full worksheet with header, grid, two-column clues, and answer key page
+- **HTML** — self-contained interactive puzzle (no CDN, works offline, hostable anywhere)
+
 ## Options
 
 - **Difficulty level**: Adjust clue subtlety (easy/medium/hard)
 - **Word count**: Target specific number of terms
 - **Theme**: Focus on specific topics from source
 - **JSON export**: Provide structured data for web rendering
+- **Output format**: Choose `html`, `pdf`, `png`, or `all` (default: `all`)
